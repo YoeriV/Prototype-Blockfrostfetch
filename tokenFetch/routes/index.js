@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const axios = require("axios");
+require('dotenv').config();
+
+const API = process.env.API_KEY;
 
 router.get('/', (req, res) => {
   let assets = []
@@ -10,7 +13,7 @@ router.get('/', (req, res) => {
             method: 'get',
             url : "https://cardano-mainnet.blockfrost.io/api/v0/accounts/stake1u9h75z58puw0pn0n3j50d0s4tufwqqnvhu8vjrl7hmvkk7crf3p50/addresses/assets",
             headers: {
-                'project_id':  "mainnethRwgBGQxAvygomyBOy1ZxIY7xrZRBeOr"
+                'project_id':  API
             }
         })
         .then(function (response) {
